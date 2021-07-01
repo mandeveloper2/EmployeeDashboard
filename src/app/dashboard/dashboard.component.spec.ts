@@ -62,4 +62,32 @@ describe('DashboardComponent', () => {
     component.ngOnInit();
     void expect(getEmployeesSpy).toHaveBeenCalledTimes(1);
   });
+
+  it('should return true if Employee Salary greater than 60000', () => {
+    let salary: number = 64000;
+    let returnValue = component.isSalaryGreaterThenThreshold(salary);
+
+    void expect(returnValue).toBe(true);
+  });
+
+  it('should return false if Employee Salary less than 60000', () => {
+    let salary: number = 54000;
+    let returnValue = component.isSalaryGreaterThenThreshold(salary);
+
+    void expect(returnValue).toBe(false);
+  });
+
+  it('should return true if Employee Department is HR', () => {
+    
+    let returnValue = component.isDeptHR("HR");
+
+    void expect(returnValue).toBe(true);
+  });
+
+  it('should return false if Employee Department is IT', () => {
+    
+    let returnValue = component.isDeptHR("IT");
+
+    void expect(returnValue).toBe(false);
+  });
 });
