@@ -8,6 +8,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MyNavComponent } from './my-nav.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatTableModule } from '@angular/material/table';
 
 describe('MyNavComponent', () => {
   let component: MyNavComponent;
@@ -15,7 +18,7 @@ describe('MyNavComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [MyNavComponent],
+      declarations: [MyNavComponent, DashboardComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -24,6 +27,8 @@ describe('MyNavComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        HttpClientTestingModule,
+        MatTableModule
       ]
     }).compileComponents();
   }));
