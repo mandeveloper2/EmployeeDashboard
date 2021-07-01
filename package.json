@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "postinstall": "ngcc",
+    "test": "jest --verbose --silent",
+    "test:ci": "jest --runInBand --coverage --ci --reporters=jest-junit --coverageReporters=cobertura",
+    "test:coverage": "jest --silent --coverage",
+    "test:coverage-summary": "jest --coverage --coverageReporters='text-summary'"
   },
   "private": true,
   "dependencies": {
@@ -29,13 +33,58 @@
     "@angular/cli": "~12.0.5",
     "@angular/compiler-cli": "~12.0.5",
     "@types/jasmine": "~3.6.0",
+    "@types/jest": "^26.0.23",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.7.0",
-    "karma": "~6.3.0",
-    "karma-chrome-launcher": "~3.1.0",
+    "jest": "^26.6.3",
+    "jest-junit": "^12.0.0",
+    "jest-preset-angular": "^8.4.0",
     "karma-coverage": "~2.0.3",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
     "typescript": "~4.2.3"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!(@eucoms)|(@a11y))"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupJest.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$",
+        "astTransformers": [
+          "jest-preset-angular/build/InlineFilesTransformer",
+          "jest-preset-angular/build/StripStylesTransformer"
+        ]
+      }
+    },
+    "transform": {
+      "^.+\\.(ts|html)$": "ts-jest",
+      "^.+\\.js$": "babel-jest"
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ],
+    "moduleNameMapper": {
+      "^lodash-es$": "lodash"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node",
+      ".html"
+    ]
+  },
+  "jest-junit": {
+    "outputName": "TESTS-junit.xml"
   }
 }

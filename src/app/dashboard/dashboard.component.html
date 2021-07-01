@@ -1,24 +1,4 @@
-<h2>Employee List </h2>
-<!-- <ul class="heroes">
-    <li *ngFor="let employee of employees" [class.selected]="employee === selectedEmployee"
-        (click)="onSelect(employee)">
-        <span class="badge">{{employee.EmployeeId}}</span> {{employee.EmployeeName}}
-        <span>{{employee.Department}}</span>
-        <span>{{employee.Salary |currency}}</span>
-    </li>
-</ul>
-
-<div *ngIf="selectedEmployee">
-
-    <h2>{{selectedEmployee.EmployeeName | uppercase}} Details</h2>
-    <div><span>id: </span>{{selectedEmployee.EmployeeId}}</div>
-    <div>
-        <label for="hero-name">Employee name: </label>
-        <input id="hero-name" [(ngModel)]="selectedEmployee.EmployeeName" placeholder="name">
-    </div>
-
-</div> -->
-
+<h2>Employee List</h2>
 <table mat-table [dataSource]="employees" matSort class="mat-elevation-z8 employee-table">
     <!-- EmployeeId Column -->
     <ng-container matColumnDef="EmployeeId">
