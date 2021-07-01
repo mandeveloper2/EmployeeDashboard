@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * [NPM](https://www.npmjs.com/)
 
 ##### Step 1. Download the project dependencies
-1. Use `npm install` to download the needed depenedencies for this project.
+1. Use `npm install` to download the needed dependencies for this project.
 2. Don't forget to install the [Angular CLI](https://cli.angular.io/) if you haven't already.
 
 ##### Step 2. Run json mock api server
